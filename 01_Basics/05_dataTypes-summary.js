@@ -35,3 +35,30 @@ console.log(snum == sdigit);//false
 //Non-Primitive DataType(Reference type): Ye call by reference hote hai mtlb enka reference aapko memory me directly allocate kiya jaa skta hai
 //Arrays, Objects, Functions
 
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//Memories are of two types: Stack and Heap 
+
+//Stack is used with Primitive DataTypes- mtlb yaha value ki copy di jati hai, original data me koi change nhi hota
+//Heap is usedd with Non-Primitive DataTypes- mtlb yaha direct reference diya jata hai, original data me change hota hai 
+
+//Stack eg:
+let myName = "MohitPatil";
+let anotherName = myName; //copy of myName(not original data)
+anotherName = "Dadu"; 
+console.log(myName); //original data 
+console.log(anotherName); //copy me change kiya hai
+
+//Heap eg:
+let personOne = {
+    name: "Mohit",
+    email: "mohit@gmail.com"
+};
+let personTwo = personOne; //yaha personOne ka reference diya gya hai, mtlb agr personTwo me kuch change krenge toh original data(personOne) me change hoga
+personTwo.name = "Dadu"; //changing value of key name from Mohit to Dadu
+
+console.log(personOne.name); //Dadu--Original data me change hogya 
+console.log(personTwo.name); //Dadu
+
+
+
+
