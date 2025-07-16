@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    //Note: In javascript all the events will run sequentially, but there are some exceptions
+    //Browser events 
+    
+    //Approaches to add events:
+    //1. In pure JS, don't add the events in html tags, it is not a good approach, but in react u can add 
+    // 2. document.getElementById('owl').onclick = function(){
+    //     alert("Owl got clicked");
+    // }  //Ok approch but esme kuch problems ho skti hai, kyuki aapko bhut jyada information nhi milti, instead try using event listeners
+    //3. event listeners: sirf aapko onclick ki functionality nhi balki propogation ki ability bhi dete hai
+    // document.getElementById('owl').addEventListener('click', function(){
+    //     alert("Owl got clicked again");
+    // })
+
+    //event object:
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log(e);
+        
+    // })
+
+    //what to study abt events:
+    //events types, timestamp, defaultPrevented, 
+    //target, toElement, srcElement,currentTarget
+    //Interview persepctive: clientX, clientY, screenX, screenY
+    //altkey, ctrlkey, shiftkey, keyCode
+
+    // //Event Propogation: has two concept -  
+    // // Event Bubbling(false-default yahi hota hai, agr aap false nhi bhi likhte ho toh bhi output same he aayega): Event bubbling is a type of event propagation in the Document Object Model (DOM) where an event triggered on a child element first triggers its own handler, then the handlers on its parent elements, and so on, all the way up to the root of the DOM. Essentially, events "bubble up" from the target element to its ancestors. 
+    // //Event Bubbling: Child to parent jata hai
+    // // Event Capturing(true): first captured by the outermost element in the DOM tree and then propagates downwards towards the target element that originally triggered the event. 
+    // //Event Capturing: Parent to child jata hai
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul");
+    // },false)
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log("owl clicked");
+    //     e.stopPropagation()  //Event ko parent/child(depend on true hai ki false) ki trf jane nhi dega
+    // },false)
+    
+
+
+    // //preventDefault:
+    // document.getElementById('google').addEventListener('click', function(event){
+    //     event.stopPropagation();
+    //     event.preventDefault();  //agr aap ab link p click kroge toh link open nhi hogi
+    //     console.log("Google Clicked");
+    // }, false)
+
+
+
+    document.querySelector('#images').addEventListener('click', function(event){
+        console.log(event.target.tagName);
+        if (event.target.tagName === 'IMG') {
+            console.log(e.target.id);
+            let removeIt = event.target.parentNode;
+            removeIt.remove();
+            //or
+            //removeIt.parentNode.removeChild(removeIt)
+        }
+    }, false)
+
+</script>
+</html>
