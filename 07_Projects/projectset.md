@@ -176,9 +176,9 @@ function newGame() {
 
 ```
 
-## project 5 solution
+## Project 5 solution
 
-```javascipt
+```javascript
 
 const insert = document.getElementById('insert');
 
