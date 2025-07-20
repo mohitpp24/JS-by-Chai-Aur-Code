@@ -17,11 +17,18 @@
     const sayDate = function(str){
         console.log(str, Date.now());
     }
+    let intervalId;
 
-    start.addEventListener('click', sayDate());
+    start.addEventListener('click', () => {
+        if(!intervalId){
+            intervalId = setInterval(sayDate, 1000, "hi");
+        }
+    });
 
-    const intervalId = setInterval(sayDate, 1000, "hi")
+    stop.addEventListener('click', () => {
+        clearInterval(intervalId);
+        intervalId = null;
+    });
 
-    clearInterval(intervalId)
 </script>
 </html>
